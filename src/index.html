@@ -15,12 +15,26 @@
     <!-- Angular2-related imports -->
     <script src="lib/angular2.js"></script>
     <script src="lib/zone.js"></script>
+    <script src="lib/ace.js"></script>
 
+    <style>
+      editor-app {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      .ace-editor {
+        height: 100%;
+      }
+    </style>
 </head>
 <body>
-    <hello>
-        Loading...
-    </hello>
+<editor-app>
+Loading...
+</editor-app>
 </body>
 
 <!-- Application bootstrap logic -->
@@ -29,7 +43,7 @@
     //TODO: maybe we could use sth like <div ng-app="app::AppCmpt"></div> or similar?
 
     Promise.all([System.import('angular2/core'), System.import('hello')]).then(function (modules) {
-        modules[0].bootstrap(modules[1].Hello);
+        modules[0].bootstrap(modules[1].EditorApp);
     }, console.log.bind(console));
 </script>
 

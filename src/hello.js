@@ -1,18 +1,21 @@
-import {Component, Template} from 'angular2/angular2';
+import {Component, Template, NgElement, Decorator} from 'angular2/angular2';
 import {If} from 'angular2/angular2';
 
 @Component({
-    selector: 'hello'  //TODO: default to camel-cased class name if not provided?
+    selector: 'editor-app'  //TODO: default to camel-cased class name if not provided?
 })
 @Template({
-    inline: `<span *if="name">Hello, {{name}}!</span>`,
-    directives: [If]
+    inline: `<div class="ace-editor" ace-editor>Foo bar</div>`,
+    directives: [AceEditor]
 })
-export class Hello {
-    constructor() {
-        this.name = 'World'; //TODO: how to declare a field with its default value (so I don't need a constructor)?
-        setTimeout(() => {
-          this.name = 'NEW World'
-        }, 2000);
-    }
+export class EditorApp {
+}
+
+@Decorator({
+  selector: '[ace-editor]'
+})
+class AceEditor {
+  constructor(el: NgElement) {
+    this.editor = ace.edit(el.domElement);
+  }
 }
