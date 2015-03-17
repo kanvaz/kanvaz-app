@@ -6,7 +6,7 @@ import {EditorIframe} from 'editorIframe';
     selector: 'editor-app'  //TODO: default to camel-cased class name if not provided?
 })
 @Template({
-    inline: `<div class="ace-editor" ace-editor #ace>Foo bar</div>
+    inline: `<ace-editor style="width:100%; height:100%; display:block;"></ace-editor>
             <button (click)="editor.setContent()"">foo</button>
             <editor-iframe #editor></editor-iframe>`,
     directives: [AceEditor, EditorIframe]
@@ -14,8 +14,11 @@ import {EditorIframe} from 'editorIframe';
 export class EditorApp {
 }
 
-@Decorator({
-  selector: '[ace-editor]'
+@Component({
+  selector: 'ace-editor'
+})
+@Template({
+    inline: `<div class="ace-editor">Foo bar</div>`,
 })
 class AceEditor {
   constructor(el: NgElement) {
