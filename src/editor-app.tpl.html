@@ -1,10 +1,10 @@
 HTML
 <ace-editor #ace>Put your html here</ace-editor>
 CSS
-<ace-editor #ace>Put your CSS here</ace-editor>
+<ace-editor #ace-css>Put your CSS here</ace-editor>
 JavaScript
-<ace-editor #ace>Put your JavaScript here</ace-editor>
+<ace-editor #acejs>Put your JavaScript here</ace-editor>
 
 
-<button (click)="editor.setContent(ace.getContent())">Run</button>
+<button (click)="run(ace, acejs, editor)">Run</button>
 <editor-iframe #editor></editor-iframe>

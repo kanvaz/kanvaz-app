@@ -11,4 +11,9 @@ import {AceEditor} from 'aceEditor';
     directives: [AceEditor, EditorIframe]
 })
 export class EditorApp {
+
+    run (htmlPane: AceEditor, jsPane: AceEditor, runPane: EditorIFrame) {
+        runPane.setContent(htmlPane.getContent());
+        runPane.setScript(jsPane.getContent());
+    }
 }

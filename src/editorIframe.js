@@ -15,7 +15,12 @@ export class EditorIframe {
     }
 
     setContent (content) {
-        this._body.innerHTML = content;//'<ul><li>foo</li><li>bar</li><ul>';
-        console.log(content);
+        this._body.innerHTML = content;
+    }
+
+    setScript (content) {
+        var script = this._document.createElement('script');
+        script.innerHTML = content;
+        this._body.appendChild(script);
     }
 }
