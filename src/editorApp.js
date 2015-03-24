@@ -12,7 +12,8 @@ import {AceEditor} from 'aceEditor';
 })
 export class EditorApp {
 
-    run (htmlPane: AceEditor, jsPane: AceEditor, runPane: EditorIFrame) {
+    run (htmlPane: AceEditor, cssPane: AceEditor, jsPane: AceEditor, runPane: EditorIFrame) {
+        runPane.setCss(cssPane.getContent());
         runPane.setContent(htmlPane.getContent());
         runPane.setScript(jsPane.getContent());
     }
