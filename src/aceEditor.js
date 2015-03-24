@@ -4,7 +4,8 @@ import {Component, Template, NgElement} from 'angular2/angular2';
   selector: 'ace-editor'
 })
 @Template({
-    inline: `<div class="ace-editor">Foo bar</div>`,
+    // FIXME: Shadow Dom usage doesn't seem to work here
+    inline: `<div class="ace-editor"><content></content></div>`,
 })
 export class AceEditor {
   constructor(el: NgElement) {
