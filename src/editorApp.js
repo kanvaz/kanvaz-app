@@ -7,7 +7,7 @@ import {AceEditor} from 'aceEditor';
     selector: 'editor-app'  //TODO: default to camel-cased class name if not provided?
 })
 @Template({
-    inline: `<ace-editor #ace style="width:100%; height:100%; display:block;"></ace-editor>
+    inline: `<ace-editor #ace></ace-editor>
             <button (click)="editor.setContent(ace.getContent())"">foo</button>
             <editor-iframe #editor></editor-iframe>`,
     directives: [AceEditor, EditorIframe]
