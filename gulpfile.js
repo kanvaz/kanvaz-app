@@ -8,7 +8,9 @@ var traceur = require('gulp-traceur');
 var PATHS = {
     src: {
       js: 'src/**/*.js',
-      html: 'src/**/*.html'
+      html: 'src/**/*.html',
+      css: 'src/**/*.css',
+      img: 'src/**/*.png'
     },
     lib: [
       'node_modules/gulp-traceur/node_modules/traceur/bin/traceur-runtime.js',
@@ -34,6 +36,16 @@ gulp.task('js', function () {
             types: true
         }))
         .pipe(rename({extname: '.js'})) //hack, see: https://github.com/sindresorhus/gulp-traceur/issues/54
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('css', function () {
+    return gulp.src(PATHS.src.css)
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('img', function () {
+    return gulp.src(PATHS.src.img)
         .pipe(gulp.dest('dist'));
 });
 
@@ -74,6 +86,8 @@ gulp.task('play', ['default'], function () {
 
     gulp.watch(PATHS.src.html, ['html']);
     gulp.watch(PATHS.src.js, ['js']);
+    gulp.watch(PATHS.src.css, ['css']);
+    gulp.watch(PATHS.src.img, ['img']);
 
     app = connect().use(serveStatic(__dirname + '/dist'));  // serve everything that is static
     http.createServer(app).listen(port, function () {
@@ -81,4 +95,4 @@ gulp.task('play', ['default'], function () {
     });
 });
 
-gulp.task('default', ['js', 'html', 'libs']);
+gulp.task('default', ['js', 'css', 'img', 'html', 'libs']);

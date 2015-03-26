@@ -4,7 +4,7 @@ import {Component, Template, NgElement} from 'angular2/angular2';
     selector: 'editor-iframe'  //TODO: default to camel-cased class name if not provided?
 })
 @Template({
-    inline: `<iframe style="width: 100%;border: 3px dashed;">{{foo}}</iframe>`,
+    inline: `<iframe style="">{{foo}}</iframe>`,
 })
 export class EditorIframe {
     constructor(el:NgElement) {
