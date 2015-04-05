@@ -1,0 +1,23 @@
+<section class="editor-app">
+  <header class="editor-header">
+  </header>
+  <div class="editor-content">
+    <panes>
+      <pane>
+        <ace-editor (change)="run(html, css, js, output)" #html></ace-editor>
+      </pane>
+      <!-- //TODO(Pascal): move this into `<pane>` component -->
+      <!-- <div class="pane-resizer"></div> -->
+      <pane>
+        <ace-editor #css></ace-editor>
+      </pane>
+      <pane>
+        <ace-editor #js></ace-editor>
+      </pane>
+      <pane>
+        <button (click)="run(html, css, js, output)">Run</button>
+        <output #output></output>
+      </pane>
+    </panes>
+  </div>
+</section>

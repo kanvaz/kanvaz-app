@@ -6,12 +6,14 @@
   left: 0;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
 }
+
 .editor-app .ace_print-margin {
   display: none;
 }
 
 .editor-header {
   background-color: #4D8799;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
   position: fixed;
   top: 0;
   height: 50px;
@@ -46,6 +48,32 @@
   bottom: 0;
   right: 0;
 }
+
+
+/* panes { */
+/*   display: flex; */
+/*   width: 100%; */
+/*   margin: 0; */
+/*   height: 100%; */
+/* } */
+
+/* pane { */
+/*   flex:0.33; */
+/*   padding: 12px; */
+/*   overflow-y: auto; */
+/*   overflow-x: hide; */
+/* } */
+/* .pane-resizer { */
+/*   width: 0; */
+/*   text-align: center; */
+/*   border: 1px solid #eee; */
+/* } */
+
+/* .pane-resizer:hover { */
+/*   cursor: move; */
+/*   border: 1px dashed #4D8799; */
+/* } */
+
 
 .editor-pane {
   border-right: 1px solid #EEE;

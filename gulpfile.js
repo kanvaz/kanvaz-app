@@ -4,6 +4,7 @@ var concat = require('gulp-concat');
 var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
 var traceur = require('gulp-traceur');
+var flatten = require('gulp-flatten');
 
 var PATHS = {
     src: {
@@ -17,7 +18,7 @@ var PATHS = {
       'node_modules/es6-module-loader/dist/es6-module-loader-sans-promises.src.js',
       'node_modules/systemjs/lib/extension-register.js',
       'node_modules/angular2/node_modules/zone.js/zone.js',
-      'bower_components/ace-builds/src/ace.js'
+      'vendor/ace-builds/src/ace.js'
     ]
 };
 
@@ -27,6 +28,7 @@ gulp.task('clean', function(done) {
 
 gulp.task('js', function () {
     return gulp.src(PATHS.src.js)
+        .pipe(flatten())
         .pipe(rename({extname: ''})) //hack, see: https://github.com/sindresorhus/gulp-traceur/issues/54
         .pipe(plumber())
         .pipe(traceur({
@@ -41,16 +43,19 @@ gulp.task('js', function () {
 
 gulp.task('css', function () {
     return gulp.src(PATHS.src.css)
+        .pipe(flatten())
         .pipe(gulp.dest('dist'));
 });
 
 gulp.task('img', function () {
     return gulp.src(PATHS.src.img)
+        .pipe(flatten())
         .pipe(gulp.dest('dist'));
 });
 
 gulp.task('html', function () {
     return gulp.src(PATHS.src.html)
+        .pipe(flatten())
         .pipe(gulp.dest('dist'));
 });
 
