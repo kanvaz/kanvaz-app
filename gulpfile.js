@@ -23,7 +23,10 @@ var PATHS = {
     'vendor/ace-builds/src/ace.js',
     'vendor/ace-builds/src/mode-javascript.js',
     'vendor/ace-builds/src/mode-css.js',
-    'vendor/ace-builds/src/mode-html.js'
+    'vendor/ace-builds/src/mode-html.js',
+    'vendor/ace-builds/src/worker-javascript.js',
+    'vendor/ace-builds/src/worker-css.js',
+    'vendor/ace-builds/src/worker-html.js'
   ]
 };
 

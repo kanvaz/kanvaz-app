@@ -17,8 +17,10 @@ export class AceEditor {
   constructor(@Attribute('mode') mode:String, el: NgElement) {
     this.editor = ace.edit(el.domElement);
     this.editor.renderer.setShowGutter(false);
-    if (mode) {
-      this.editor.getSession().setMode("ace/mode/" + mode);
+    this.editor.setHighlightActiveLine(false);
+    this.mode = mode;
+    if (this.mode) {
+      this.editor.getSession().setMode("ace/mode/" + this.mode);
     }
   }
 

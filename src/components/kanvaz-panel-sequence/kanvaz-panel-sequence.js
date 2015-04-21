@@ -1,9 +1,8 @@
-import { Component, View, onAllChangesDone, Query } from 'angular2/angular2';
+import { Component, View, Query } from 'angular2/angular2';
 import { KanvazPanel } from 'kanvaz-panel';
 
 @Component({
-  selector: 'kanvaz-panel-sequence',
-  lifecycle: [onAllChangesDone]
+  selector: 'kanvaz-panel-sequence'
 })
 @View({
   template: '<content></content>'
@@ -12,7 +11,10 @@ export class KanvazPanelSequence {
 
   constructor(@Query(KanvazPanel) panelQuery:KanvazPanel) {
     this.panels = panelQuery._results;
-    this.resetPanels();
+    // TODO(pascal): this is quite hacky Query._results is async, also not sure if that's the way to get hold of'em.
+    setTimeout(() => {
+      this.resetPanels();
+    }, 0)
   }
 
   togglePanel(panel) {
@@ -42,9 +44,5 @@ export class KanvazPanelSequence {
 
       left += width;
     }
-  }
-
-  onAllChangesDone() {
-    this.resetPanels();
   }
 }

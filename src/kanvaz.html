@@ -4,13 +4,14 @@
     <button (click)="sequence.togglePanel(jspanel)">JavaScript</button>
     <button (click)="sequence.togglePanel(csspanel)">CSS</button>
     <button (click)="sequence.togglePanel(outputpanel)">Output</button>
-    <button (click)="run(html, css, js, output)">Run</button>
+    <button (click)="runner.run(html, css, js, output)">Run</button>
   </kanvaz-header>
   <main class="kanvaz-app__main">
-    <kanvaz-panel-sequence #sequence>
-      <kanvaz-panel #htmlpanel>
-        HTML
-        <ace-editor mode="html" #html>&lt;!doctype html&gt;
+    <kanvaz-runner #runner>
+      <kanvaz-panel-sequence #sequence>
+        <kanvaz-panel #htmlpanel>
+          HTML
+          <ace-editor mode="html" #html>&lt;!doctype html&gt;
   &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;title&gt;Kanvaz&lt;/title&gt;
@@ -18,22 +19,23 @@
   &lt;body&gt;
     &lt;h1&gt;Hello&lt;/h1&gt;
   &lt;/body&gt;
-&lt;/html&gt;
-
-</ace-editor>
-      </kanvaz-panel>
-      <kanvaz-panel #jspanel active="false">
-        JavaScript
-        <ace-editor mode="javascript" #js></ace-editor>
-      </kanvaz-panel>
-      <kanvaz-panel #csspanel active="false">
-        CSS
-        <ace-editor mode="css" #css></ace-editor>
-      </kanvaz-panel>
-      <kanvaz-panel #outputpanel>
-        Output
-        <kanvaz-output #output></kanvaz-output>
-      </kanvaz-panel>
-    </kanvaz-panel-sequence>
+&lt;/html&gt;</ace-editor>
+        </kanvaz-panel>
+        <kanvaz-panel #csspanel>
+          CSS
+          <ace-editor mode="css" #css>h1 {
+  color: red;
+}</ace-editor>
+        </kanvaz-panel>
+        <kanvaz-panel #jspanel active="false">
+          JavaScript
+          <ace-editor mode="javascript" #js></ace-editor>
+        </kanvaz-panel>
+        <kanvaz-panel #outputpanel>
+          Output
+          <kanvaz-output #output></kanvaz-output>
+        </kanvaz-panel>
+      </kanvaz-panel-sequence>
+    </kanvaz-runner>
   </main>
 </section>
