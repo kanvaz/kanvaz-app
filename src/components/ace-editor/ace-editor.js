@@ -2,7 +2,7 @@ import {
   Component,
   View,
   NgElement,
-  EventEmitter
+  Attribute
 } from 'angular2/angular2';
 
 @Component({
@@ -14,9 +14,12 @@ import {
 })
 export class AceEditor {
 
-  constructor(el: NgElement) {
+  constructor(@Attribute('mode') mode:String, el: NgElement) {
     this.editor = ace.edit(el.domElement);
     this.editor.renderer.setShowGutter(false);
+    if (mode) {
+      this.editor.getSession().setMode("ace/mode/" + mode);
+    }
   }
 
   getContent() {

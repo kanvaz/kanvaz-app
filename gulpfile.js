@@ -20,7 +20,10 @@ var PATHS = {
     'node_modules/angular2/node_modules/zone.js/zone.js',
     'node_modules/angular2/node_modules/zone.js/long-stack-trace-zone.js',
     'node_modules/babel-core/browser.js',
-    'vendor/ace-builds/src/ace.js'
+    'vendor/ace-builds/src/ace.js',
+    'vendor/ace-builds/src/mode-javascript.js',
+    'vendor/ace-builds/src/mode-css.js',
+    'vendor/ace-builds/src/mode-html.js'
   ]
 };
 
