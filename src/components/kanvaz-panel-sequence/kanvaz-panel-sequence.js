@@ -11,7 +11,8 @@ export class KanvazPanelSequence {
 
   constructor(@Query(KanvazPanel) panelQuery:KanvazPanel) {
     this.panels = panelQuery._results;
-    // TODO(pascal): this is quite hacky Query._results is async, also not sure if that's the way to get hold of'em.
+    // TODO(pascal): this is quite hacky Query._results is async,
+    // also not sure if that's the way to get hold of'em.
     setTimeout(() => {
       this.resetPanels();
     }, 0)

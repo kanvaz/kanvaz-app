@@ -13,7 +13,8 @@ export class KanvazRunner {
   constructor(@Query(AceEditor) aceEditorQuery:AceEditor, @Query(KanvazOutput) outputQuery:KanvazOutput) {
     this.editors = aceEditorQuery._results;
     this.output = outputQuery._results;
-    // TODO(pascal): this is quite hacky Query._results is async, also not sure if that's the way to get hold of'em.
+    // TODO(pascal): this is quite hacky Query._results is async,
+    // also not sure if that's the way to get hold of'em.
     setTimeout(() => {
       this.run(this.editors[0], this.editors[1], this.editors[2], this.output[0]);
     }, 0);

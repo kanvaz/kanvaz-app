@@ -22,11 +22,6 @@ import {AceEditor} from 'ace-editor';
   ]
 })
 export class Kanvaz {
-  run (htmlPane: AceEditor, cssPane: AceEditor, jsPane: AceEditor, runPane: KanvazOutput) {
-    runPane.setCss(cssPane.getContent());
-    runPane.setContent(htmlPane.getContent());
-    runPane.setScript(babel.transform(jsPane.getContent()).code);
-  }
 
 }
 
