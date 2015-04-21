@@ -4,7 +4,7 @@ import {Component, View, NgElement} from 'angular2/angular2';
   selector: 'kanvaz-output'
 })
 @View({
-  template: `<iframe></iframe>`
+  template: `<style>@import 'kanvaz-output.css';</style><iframe></iframe>`
 })
 export class KanvazOutput {
 

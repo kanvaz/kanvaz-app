@@ -46,9 +46,3 @@ ace-editor {
   height: 100%;
   display: block;
 }
-
-iframe {
-  height: 100%;
-  width: 100%;
-  border: 0;
-}
