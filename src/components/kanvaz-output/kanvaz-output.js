@@ -1,12 +1,13 @@
-import {Component, Template, NgElement} from 'angular2/angular2';
+import {Component, View, NgElement} from 'angular2/angular2';
 
 @Component({
-    selector: 'output'
+  selector: 'kanvaz-output'
 })
-@Template({
-    inline: `<iframe></iframe>`
+@View({
+  template: `<iframe></iframe>`
 })
-export class Output {
+export class KanvazOutput {
+
   constructor(el:NgElement) {
     this._el = el;
     this._document = this._el.domElement.firstChild.contentDocument;
@@ -27,7 +28,7 @@ export class Output {
   }
 
   setScript (content) {
-    let script = this._document.createElement('script');
+    var script = this._document.createElement('script');
     script.innerHTML = content;
     this._body.appendChild(script);
   }

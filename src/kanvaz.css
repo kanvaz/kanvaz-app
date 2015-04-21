@@ -1,0 +1,54 @@
+.kanvaz-app {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+}
+
+.kanvaz-app__main {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  bottom: 0;
+  right: 0;
+}
+
+.kanvaz-app .ace_print-margin {
+  display: none;
+}
+
+panes,
+pane,
+.pane-content,
+.pane-resizer {
+  height: 100%;
+}
+
+pane-resizer {
+  width: 0;
+  text-align: center;
+  border: 1px solid #ddd;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+pane-resizer:hover,
+pane-resizer.hover {
+  cursor: ew-resize;
+  border: 1px dashed #4D8799;
+}
+
+ace-editor {
+  height: 100%;
+  display: block;
+}
+
+iframe {
+  height: 100%;
+  width: 100%;
+  border: 0;
+}

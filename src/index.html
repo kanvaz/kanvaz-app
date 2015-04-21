@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Kanvaz</title>
 
     <!-- ES6-related imports -->
     <script src="lib/traceur-runtime.js"></script>
@@ -12,22 +13,21 @@
     </script>
 
     <!-- Angular2-related imports -->
-    <script src="lib/angular2.js"></script>
     <script src="lib/zone.js"></script>
+    <script src="lib/long-stack-trace-zone.js"></script>
+    <script src="lib/angular2.js"></script>
     <script src="lib/ace.js"></script>
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="editor.css">
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'> -->
+    <link rel="stylesheet" href="kanvaz.css">
 </head>
 <body>
-  <editor>
-    Loading...
-  </editor>
+  <kanvaz>
+    Loading Kanvaz...
+  </kanvaz>
 </body>
 
 <script>
-    Promise.all([System.import('angular2/core'), System.import('editor')]).then(function (modules) {
-        modules[0].bootstrap(modules[1].Editor);
-    }, console.log.bind(console));
+    System.import('kanvaz').catch(console.log.bind(console));
 </script>
 </html>
