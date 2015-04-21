@@ -16,7 +16,6 @@ export class KanvazPanelSequence {
   }
 
   togglePanel(panel) {
-    console.dir(panel);
     panel.domElement.hidden = !panel.domElement.hidden;
     this.resetPanels();
   }

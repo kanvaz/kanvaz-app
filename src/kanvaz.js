@@ -24,7 +24,7 @@ export class Kanvaz {
   run (htmlPane: AceEditor, cssPane: AceEditor, jsPane: AceEditor, runPane: KanvazOutput) {
     runPane.setCss(cssPane.getContent());
     runPane.setContent(htmlPane.getContent());
-    runPane.setScript(jsPane.getContent());
+    runPane.setScript(babel.transform(jsPane.getContent()).code);
   }
 }
 

@@ -19,6 +19,7 @@ var PATHS = {
     'node_modules/systemjs/lib/extension-register.js',
     'node_modules/angular2/node_modules/zone.js/zone.js',
     'node_modules/angular2/node_modules/zone.js/long-stack-trace-zone.js',
+    'node_modules/babel-core/browser.js',
     'vendor/ace-builds/src/ace.js'
   ]
 };

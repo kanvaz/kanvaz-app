@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "angular2": "2.0.0-alpha.20",
+    "babel-core": "^5.1.11",
     "es6-module-loader": "~0.16.5",
     "systemjs": "~0.16.7"
   }
