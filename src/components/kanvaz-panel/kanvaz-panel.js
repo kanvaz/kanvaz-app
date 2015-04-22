@@ -1,4 +1,10 @@
-import { Component, View, Attribute, NgElement } from 'angular2/angular2';
+import {
+  Component, 
+  View, 
+  Attribute,
+  PropertySetter,
+  NgElement
+} from 'angular2/angular2';
 
 @Component({
   selector: 'kanvaz-panel'
@@ -8,11 +14,15 @@ import { Component, View, Attribute, NgElement } from 'angular2/angular2';
 })
 export class KanvazPanel {
 
-  constructor(@Attribute('active') active:String, reference:NgElement) {
+  constructor(
+    @Attribute('active') active:String,
+    @PropertySetter('hidden') hiddenSetter:Function,
+    reference:NgElement
+  ) {
     this.domElement = reference.domElement;
 
     if (active && active === 'false') {
-      this.domElement.hidden = true;
+      hiddenSetter(true);
     }
   }
 }
