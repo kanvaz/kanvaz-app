@@ -27,4 +27,8 @@ export class AceEditor {
   getContent() {
     return this.editor.getValue();
   }
+
+  setContent(value, cursorPos) {
+    this.editor.setValue(value, cursorPos);
+  }
 }
