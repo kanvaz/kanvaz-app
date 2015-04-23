@@ -23,9 +23,7 @@ export class KanvazService {
       },
       {
         name: 'styles.css',
-        content: `h1 {
-  color: blue;
-}`
+        content: ``
       }
     ]));
 
