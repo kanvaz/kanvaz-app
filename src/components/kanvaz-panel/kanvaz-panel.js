@@ -14,15 +14,8 @@ import {
 })
 export class KanvazPanel {
 
-  constructor(
-    @Attribute('active') active:String,
-    @PropertySetter('hidden') hiddenSetter:Function,
-    reference:NgElement
-  ) {
+  constructor(reference:NgElement) {
     this.domElement = reference.domElement;
-
-    if (active && active === 'false') {
-      hiddenSetter(true);
-    }
   }
+
 }
