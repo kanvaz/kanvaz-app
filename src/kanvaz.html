@@ -1,10 +1,10 @@
 <section class="kanvaz-app">
   <kanvaz-header>
-    <button (click)="sequence.togglePanel(htmlpanel)">HTML</button>
-    <button (click)="sequence.togglePanel(jspanel)">JavaScript</button>
-    <button (click)="sequence.togglePanel(csspanel)">CSS</button>
-    <button (click)="sequence.togglePanel(outputpanel)">Output</button>
-    <button (click)="runner.run(html, css, js, output)">Run</button>
+    <kanvaz-button [active]="!htmlpanel.domElement.hidden" (click)="sequence.togglePanel(htmlpanel)">HTML</kanvaz-button>
+    <kanvaz-button [active]="!jspanel.domElement.hidden" (click)="sequence.togglePanel(jspanel)">JavaScript</kanvaz-button>
+    <kanvaz-button [active]="!csspanel.domElement.hidden" (click)="sequence.togglePanel(csspanel)">CSS</kanvaz-button>
+    <kanvaz-button [active]="!outputpanel.domElement.hidden" (click)="sequence.togglePanel(outputpanel)">Output</kanvaz-button>
+    <kanvaz-button (click)="runner.run(html, css, js, output)">Run</kanvaz-button>
   </kanvaz-header>
   <main class="kanvaz-app__main">
     <kanvaz-runner #runner>

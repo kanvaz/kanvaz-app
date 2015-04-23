@@ -1,5 +1,6 @@
 import {bootstrap, Component, View, If, CSSClass, Query} from 'angular2/angular2';
 import {KanvazHeader} from 'kanvaz-header';
+import {KanvazButton} from 'kanvaz-button';
 import {KanvazPanelSequence} from 'kanvaz-panel-sequence';
 import {KanvazPanel} from 'kanvaz-panel';
 import {KanvazOutput} from 'kanvaz-output';
@@ -13,6 +14,7 @@ import {AceEditor} from 'ace-editor';
   templateUrl: 'kanvaz.html',
   directives: [
     KanvazHeader,
+    KanvazButton,
     KanvazPanelSequence,
     KanvazPanel,
     KanvazOutput,

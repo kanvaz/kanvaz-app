@@ -1,0 +1,26 @@
+kanvaz-button {
+  background: #455A64;
+  color: #FFF;
+  border: 0;
+  font-size: 1em;
+  padding: 0.5em 0.8em;
+  display: inline-block;
+}
+
+kanvaz-button:first-of-type {
+  border-top-left-radius: 0.3em;
+  border-bottom-left-radius: 0.3em;
+}
+
+kanvaz-button:last-of-type {
+  border-top-right-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+}
+
+kanvaz-button:hover,
+kanvaz-button.active:hover {
+  cursor: pointer;
+}
+kanvaz-button.active {
+  background: #26A69A;
+}
