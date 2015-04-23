@@ -9,20 +9,16 @@
   <main class="kanvaz-app__main">
     <kanvaz-runner #runner>
       <kanvaz-panel-sequence #sequence>
-        <kanvaz-panel #htmlpanel>
-          HTML
+        <kanvaz-panel #htmlpanel [title]="'HTML'">
           <ace-editor mode="html" #html></ace-editor>
         </kanvaz-panel>
-        <kanvaz-panel #csspanel>
-          CSS
+        <kanvaz-panel #csspanel [title]="'CSS'">
           <ace-editor mode="css" #css></ace-editor>
         </kanvaz-panel>
-        <kanvaz-panel #jspanel [hidden]="true">
-          JavaScript
+        <kanvaz-panel #jspanel [title]="'JS'" [hidden]="true">
           <ace-editor mode="javascript" #js></ace-editor>
         </kanvaz-panel>
-        <kanvaz-panel #outputpanel>
-          Output
+        <kanvaz-panel #outputpanel [title]="'Output'">
           <kanvaz-output #output></kanvaz-output>
         </kanvaz-panel>
       </kanvaz-panel-sequence>

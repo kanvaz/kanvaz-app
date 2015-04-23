@@ -7,7 +7,10 @@ import {
 } from 'angular2/angular2';
 
 @Component({
-  selector: 'kanvaz-panel'
+  selector: 'kanvaz-panel',
+  properties: {
+    title: 'title'
+  }
 })
 @View({
   templateUrl: 'kanvaz-panel.html'
