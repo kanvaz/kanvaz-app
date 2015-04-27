@@ -49,6 +49,10 @@ export class KanvazApp {
     });
   }
 
+  setPanelSequence(panelSequence:KanvazPanelSequence) {
+    this.panelSequence = panelSequence;
+  }
+
   setOutputTarget(output:KanvazOutput) {
     this.outputTarget = output;
   }
@@ -65,5 +69,7 @@ export class KanvazApp {
 
 bootstrap(KanvazApp).then((kanvazComponentRef) => {
   // TODO(pascal): figure out if this is really the best way to do this. ISSUE (https://github.com/angular/angular/issues/1530)
-  kanvazComponentRef.instance.run();
+  let app = kanvazComponentRef.instance;
+  app.panelSequence.resetPanels();
+  app.run();
 });
