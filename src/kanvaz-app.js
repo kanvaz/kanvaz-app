@@ -16,11 +16,11 @@ const INITIAL_JS_FILE = 'app.js';
 
 
 @Component({
-  selector: 'kanvaz',
+  selector: 'kanvaz-app',
   injectables: [KanvazService]
 })
 @View({
-  templateUrl: 'kanvaz.html',
+  templateUrl: 'kanvaz-app.html',
   directives: [
     KanvazHeader,
     KanvazButton,
@@ -33,7 +33,7 @@ const INITIAL_JS_FILE = 'app.js';
     AceEditor
   ]
 })
-export class Kanvaz {
+export class KanvazApp {
 
   constructor(kanvazService:KanvazService) {
 
@@ -63,7 +63,7 @@ export class Kanvaz {
   }
 }
 
-bootstrap(Kanvaz).then((kanvazComponentRef) => {
+bootstrap(KanvazApp).then((kanvazComponentRef) => {
   // TODO(pascal): figure out if this is really the best way to do this. ISSUE (https://github.com/angular/angular/issues/1530)
   kanvazComponentRef.instance.run();
 });

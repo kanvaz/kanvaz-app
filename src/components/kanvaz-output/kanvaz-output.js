@@ -1,5 +1,5 @@
 import {Component, View, NgElement, Ancestor} from 'angular2/angular2';
-import {Kanvaz} from 'kanvaz';
+import {KanvazApp} from 'kanvaz-app';
 import {KanvazModel} from 'kanvaz-model';
 
 @Component({
@@ -10,7 +10,7 @@ import {KanvazModel} from 'kanvaz-model';
 })
 export class KanvazOutput {
 
-  constructor(app:Kanvaz, el:NgElement) {
+  constructor(app:KanvazApp, el:NgElement) {
 
     app.setOutputTarget(this);
 
