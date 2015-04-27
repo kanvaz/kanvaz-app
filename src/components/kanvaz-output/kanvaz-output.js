@@ -1,4 +1,6 @@
-import {Component, View, NgElement} from 'angular2/angular2';
+import {Component, View, NgElement, Ancestor} from 'angular2/angular2';
+import {Kanvaz} from 'kanvaz';
+import {KanvazModel} from 'kanvaz-model';
 
 @Component({
   selector: 'kanvaz-output'
@@ -8,7 +10,10 @@ import {Component, View, NgElement} from 'angular2/angular2';
 })
 export class KanvazOutput {
 
-  constructor(el:NgElement) {
+  constructor(app:Kanvaz, el:NgElement) {
+
+    app.setOutputTarget(this);
+
     this._el = el;
     this._document = this._el.domElement.firstChild.contentDocument;
     this._body = this._document.body;
@@ -36,5 +41,12 @@ export class KanvazOutput {
   setCss (content) {
     this.styleElement.textContent = content;
     this._head.appendChild(this.styleElement);
+  }
+
+  execute(kanvaz:KanvazModel) {
+    // TODO(pascal): don't be explicit here
+    this.setCss(kanvaz.files[1].content);
+    this.setContent(kanvaz.files[0].content);
+    this.setScript(babel.transform(kanvaz.files[2].content).code);
   }
 }

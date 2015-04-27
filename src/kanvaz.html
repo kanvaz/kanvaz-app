@@ -1,27 +1,37 @@
 <section class="kanvaz-app">
   <kanvaz-header>
     <kanvaz-button [active]="!htmlpanel.domElement.hidden" (click)="sequence.togglePanel(htmlpanel)">HTML</kanvaz-button>
-    <kanvaz-button [active]="!jspanel.domElement.hidden" (click)="sequence.togglePanel(jspanel)">JavaScript</kanvaz-button>
+    <kanvaz-button [active]="!jspanel.domElement.hidden" (click)="sequence.togglePanel(jspanel)">JS</kanvaz-button>
     <kanvaz-button [active]="!csspanel.domElement.hidden" (click)="sequence.togglePanel(csspanel)">CSS</kanvaz-button>
     <kanvaz-button [active]="!outputpanel.domElement.hidden" (click)="sequence.togglePanel(outputpanel)">Output</kanvaz-button>
-    <kanvaz-button (click)="runner.run(html, css, js, output)">Run</kanvaz-button>
+    <kanvaz-button (click)="output.execute(kanvaz)">Run</kanvaz-button>
   </kanvaz-header>
   <main class="kanvaz-app__main">
-    <kanvaz-runner #runner>
-      <kanvaz-panel-sequence #sequence>
-        <kanvaz-panel #htmlpanel [title]="'HTML'">
-          <ace-editor mode="html" #html></ace-editor>
-        </kanvaz-panel>
-        <kanvaz-panel #csspanel [title]="'CSS'">
-          <ace-editor mode="css" #css></ace-editor>
-        </kanvaz-panel>
-        <kanvaz-panel #jspanel [title]="'JS'" [hidden]="true">
-          <ace-editor mode="javascript" #js></ace-editor>
-        </kanvaz-panel>
-        <kanvaz-panel #outputpanel [title]="'Output'">
-          <kanvaz-output #output></kanvaz-output>
-        </kanvaz-panel>
-      </kanvaz-panel-sequence>
-    </kanvaz-runner>
+    <kanvaz-panel-sequence #sequence>
+      <kanvaz-panel #htmlpanel [title]="'HTML'">
+        <ace-editor
+          [content]="kanvaz" 
+          mode="html" 
+          (change)="updateKanvaz(activeHTMLFile, htmleditor.getContent())"
+          #htmleditor></ace-editor>
+      </kanvaz-panel>
+      <kanvaz-panel #csspanel [title]="'CSS'">
+        <ace-editor
+          [content]="kanvaz"
+          (change)="updateKanvaz(activeCSSFile, csseditor.getContent())"
+          mode="css"
+          #csseditor ></ace-editor>
+      </kanvaz-panel>
+      <kanvaz-panel #jspanel [title]="'JS'" [hidden]="true">
+        <ace-editor 
+          [content]="kanvaz"
+          (change)="updateKanvaz(activeJSFile, jseditor.getContent())"
+          mode="javascript"
+          #jseditor></ace-editor>
+      </kanvaz-panel>
+      <kanvaz-panel #outputpanel [title]="'Output'">
+        <kanvaz-output #output></kanvaz-output>
+      </kanvaz-panel>
+    </kanvaz-panel-sequence>
   </main>
 </section>

@@ -23,7 +23,11 @@ export class KanvazService {
       },
       {
         name: 'styles.css',
-        content: ``
+        content: 'h1 { color: red; }'
+      },
+      {
+        name: 'app.js',
+        content: ''
       }
     ]));
 

@@ -13,35 +13,31 @@ import {AceEditor} from 'ace-editor';
 export class KanvazRunner {
 
   constructor(
-    @Query(AceEditor) aceEditorQuery:AceEditor,
+    // @Query(AceEditor) aceEditorQuery:AceEditor,
     @Query(KanvazOutput) outputQuery:KanvazOutput,
     kanvazService:KanvazService
   ) {
-    this.editors = aceEditorQuery._results;
+    // this.editors = aceEditorQuery._results;
     this.output = outputQuery._results;
 
-    // TODO(pascal): only create if really requested
-    kanvazService.create().then((kanvaz) => {
-      this.editors[0].setContent(kanvaz.getFiles()[0].content, 1); // TODO(pascal): can we really assume that [0] is the html file?
-      this.editors[1].setContent(kanvaz.getFiles()[1].content, 1);
+    //TODO(pascal): only create if really requested
+    // kanvazService.create().then((kanvaz) => {
+    //   this.kanvaz = kanvaz;
+    //   this.editors[0].setContent(kanvaz.getFiles()[0].content, 1); // TODO(pascal): can we really assume that [0] is the html file?
+    //   this.editors[1].setContent(kanvaz.getFiles()[1].content, 1);
 
-      this.run(
-        this.editors[0],
-        this.editors[1],
-        this.editors[2],
-        this.output[0]
-      );
-    });
+    //   this.run(
+    //     this.kanvaz,
+    //   );
+    // });
   }
 
-  run (
-    htmlPane: AceEditor,
-    cssPane: AceEditor,
-    jsPane: AceEditor,
-    runPane: KanvazOutput
+  runInOutputPanel (
+    kanvaz: Kanvaz,
+    outputPanel: KanvazOutput
   ) {
-    runPane.setCss(cssPane.getContent());
-    runPane.setContent(htmlPane.getContent());
-    runPane.setScript(babel.transform(jsPane.getContent()).code);
+    outputPanel.setCss(kanvaz.files[1].content);
+    outputPanel.setContent(kanvaz.files[0].content);
+    outputPanel.setScript(babel.transform(kanvaz.files[2].content).code);
   }
 }
