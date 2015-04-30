@@ -28,6 +28,7 @@ export class AceEditor {
 
     this.editor.renderer.setShowGutter(false);
     this.editor.setHighlightActiveLine(false);
+    this.editor.resize(true);
 
     if (this.mode) {
       this.editor.getSession().setMode("ace/mode/" + this.mode);
