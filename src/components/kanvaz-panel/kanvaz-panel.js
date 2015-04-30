@@ -2,7 +2,6 @@ import {
   Component, 
   View, 
   Attribute,
-  PropertySetter,
   NgElement
 } from 'angular2/angular2';
 
