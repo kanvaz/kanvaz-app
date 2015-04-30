@@ -5,7 +5,6 @@ import {KanvazHeader} from 'kanvaz-header';
 import {KanvazButton} from 'kanvaz-button';
 import {KanvazPanelSequence} from 'kanvaz-panel-sequence';
 import {KanvazPanel} from 'kanvaz-panel';
-import {KanvazFileDrawer} from 'kanvaz-file-drawer';
 import {KanvazOutput} from 'kanvaz-output';
 import {KanvazRunner} from 'kanvaz-runner';
 import {AceEditor} from 'ace-editor';
