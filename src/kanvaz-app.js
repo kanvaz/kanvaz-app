@@ -25,7 +25,6 @@ const INITIAL_JS_FILE = 'app.js';
     KanvazButton,
     KanvazPanelSequence,
     KanvazPanel,
-    KanvazFileDrawer,
     KanvazOutput,
     KanvazRunner,
     If,
