@@ -1,5 +1,6 @@
 import { PromiseWrapper } from 'angular2/src/facade/async';
-import { KanvazModel } from 'kanvaz-model';
+import { Kanvaz } from 'kanvaz';
+
 
 export class KanvazService {
 
@@ -7,7 +8,7 @@ export class KanvazService {
     let completer = PromiseWrapper.completer();
 
     // TODO(pascal): extract kanvaz data
-    completer.resolve(new KanvazModel([
+    completer.resolve(new Kanvaz([
       {
         name: 'index.html',
         content: `<!doctype html>

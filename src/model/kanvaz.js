@@ -1,4 +1,4 @@
-export class KanvazModel {
+export class Kanvaz {
 
   constructor(files:Array) {
     this.files = files;
