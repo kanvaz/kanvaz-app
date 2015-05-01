@@ -59,7 +59,7 @@ export class AceEditor {
         content = _.content.currentValue.files[1].content;
         break;
       case 'js':
-        content = _.content.currentValue.files[3].content;
+        content = _.content.currentValue.files[2].content;
         break;
     }
 
