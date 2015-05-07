@@ -1,6 +1,6 @@
 import {Component, View, NgElement, Ancestor} from 'angular2/angular2';
 import {KanvazApp} from 'kanvaz-app';
-import {KanvazModel} from 'kanvaz-model';
+import {Kanvaz} from 'kanvaz';
 
 @Component({
   selector: 'kanvaz-output'
