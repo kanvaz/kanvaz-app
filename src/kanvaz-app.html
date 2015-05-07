@@ -10,21 +10,21 @@
     <kanvaz-panel-sequence #sequence>
       <kanvaz-panel #htmlpanel [title]="'HTML'">
         <ace-editor
-          [content]="kanvaz" 
+          [content]="kanvaz.files[0].content" 
           mode="html" 
           (change)="updateKanvaz(activeHTMLFile, htmleditor.getContent())"
           #htmleditor></ace-editor>
       </kanvaz-panel>
       <kanvaz-panel #csspanel [title]="'CSS'">
         <ace-editor
-          [content]="kanvaz"
+          [content]="kanvaz.files[1].content"
           (change)="updateKanvaz(activeCSSFile, csseditor.getContent())"
           mode="css"
           #csseditor ></ace-editor>
       </kanvaz-panel>
       <kanvaz-panel #jspanel [title]="'JS'" [hidden]="true">
         <ace-editor 
-          [content]="kanvaz"
+          [content]="kanvaz.files[2].content"
           (change)="updateKanvaz(activeJSFile, jseditor.getContent())"
           mode="javascript"
           #jseditor></ace-editor>

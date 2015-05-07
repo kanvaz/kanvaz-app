@@ -35,7 +35,12 @@ export class AceEditor {
     }
 
     this.editor.on('change', () => {
+
       this.change.next();
+
+      if (this.contentSetThroughSetter) {
+        this.contentSetThroughSetter = false;
+      }
     });
   }
 
@@ -44,25 +49,11 @@ export class AceEditor {
   }
 
   setContent(value, cursorPos) {
+    this.contentSetThroughSetter = true;
     this.editor.setValue(value, cursorPos);
   }
 
   onChange(_) {
-    var content;
-
-    // TODO(pascal): this component shouldn't know about kanvaz model structure
-    switch(this.mode) {
-      case 'html':
-        content = _.content.currentValue.files[0].content;
-        break;
-      case 'css':
-        content = _.content.currentValue.files[1].content;
-        break;
-      case 'js':
-        content = _.content.currentValue.files[2].content;
-        break;
-    }
-
-    this.editor.setValue(content, 1);
+    this.setContent(this.content, 1);
   }
 }
