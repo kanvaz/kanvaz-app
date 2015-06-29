@@ -15,7 +15,7 @@ import {KanvazEditor} from './kanvaz_editor/kanvaz_editor';
   `
 })
 @RouteConfig([
-  { path: '/', as: 'editor', component: KanvazEditor }
+  { path: '/', component: KanvazEditor }
 ])
 export class App {
 

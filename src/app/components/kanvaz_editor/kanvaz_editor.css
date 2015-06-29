@@ -33,6 +33,10 @@
   border-right: 1px solid #ccc;
 }
 
+.file-drawer--closed {
+  display: none;
+}
+
 .toolbar {
   display: block;
   background-color: transparent;

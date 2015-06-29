@@ -1,55 +1,53 @@
-import {Component, View} from 'angular2/angular2';
-import {forwardRef, Inject, bind, Unbounded} from 'angular2/angular2';
+import {Component, View, onAllChangesDone, onInit} from 'angular2/angular2';
 import {KanvazPanel} from '../kanvaz_panel/kanvaz_panel';
-import {KanvazEditor} from '../kanvaz_editor/kanvaz_editor';
 
 @Component({
-  selector: 'kanvaz-panel-sequence'
+  selector: 'kanvaz-panel-sequence',
+  lifecycle: [onInit],
+  exportAs: 'sequence'
 })
 @View({
   template: '<content></content>'
-  // directives: [
-  //   bind(forwardRef(() => KanvazEditor)).toClass(forwardRef(() => KanvazEditor))
-  // ]
 })
 export class KanvazPanelSequence {
 
-  // constructor(@Inject(forwardRef(() => KanvazEditor)) editor: KanvazEditor) {
-    // console.dir(editor);
-  constructor(editor: KanvazEditor) {
-    console.dir(editor);
-    // TODO(pascal): this is quite hacky Query._results is async,
-    // also not sure if that's the way to get hold of'em.
-    // this.panels = panelQuery._results;
+  panels:List<KanvazPanel> = [];
+
+  addPanel(panel:KanvazPanel) {
+    this.panels.push(panel);
   }
 
-  // togglePanel(panel) {
-  //   panel.domElement.hidden = !panel.domElement.hidden;
-  //   this.resetPanels();
-  // }
+  togglePanel(panel:KanvazPanel) {
+    panel.nativeElement.hidden = !panel.nativeElement.hidden;
+    this.resetPanels();
+  }
 
-  // resetPanels() {
-  //   let visiblePanels = this.panels.filter((panel) => {
-  //     return panel.domElement.hidden === false;
-  //   });
+  resetPanels() {
+    var visiblePanels = this.panels.filter((panel) => {
+      return panel.nativeElement.hidden !== true;
+    });
 
-  //   let width = 100 / visiblePanels.length,
-  //       right = 0,
-  //       left =  0;
+    var width = 100 / visiblePanels.length,
+        right = 0,
+        left =  0;
 
-  //   for (let i = 0; i < visiblePanels.length; i++) {
+    for (var i = 0; i < visiblePanels.length; i++) {
 
-  //     let styles = visiblePanels[i].domElement.style;
+      var styles = visiblePanels[i].nativeElement.style;
 
-  //     right = 100 - (width * (i+1));
+      right = 100 - (width * (i+1));
 
-  //     styles.top = 0;
-  //     styles.bottom = 0;
-  //     styles.left = left + '%';
-  //     styles.right = right + '%';
+      styles.top = 0;
+      styles.bottom = 0;
+      styles.left = left + '%';
+      styles.right = right + '%';
 
-  //     left += width;
-  //   }
-  // }
+      left += width;
+    }
+  }
+
+  onInit() {
+    this.resetPanels();
+  }
 }
 
