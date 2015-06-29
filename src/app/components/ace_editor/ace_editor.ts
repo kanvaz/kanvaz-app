@@ -1,6 +1,4 @@
 import {Component, View, ElementRef} from 'angular2/angular2';
-import {ShadowDomStrategy, EmulatedUnscopedShadowDomStrategy} from 'angular2/render';
-import {DOCUMENT_TOKEN} from 'angular2/src/render/dom/dom_renderer';
 
 @Component({
   selector: 'ace-editor',
