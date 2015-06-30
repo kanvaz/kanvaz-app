@@ -2,9 +2,8 @@
   <div class="file-drawer" [class]="{'file-drawer--closed': !fileDrawerOpen}">
     <h3 style="margin: 0;">Files</h3>
     <ul style="margin: 0;">
-      <li *ng-for="var file of kanvaz.files"><a (click)="">{{file.name}}</a></li>
+      <li *ng-for="var file of kanvaz.files"><a (click)="openFile(file)">{{file.name}}</a> <button (click)="kanvaz.removeFile(file)">remove</button></li>
     </ul>
-
     <button (click)="promptNewFile()">New file</button>
   </div>
 </div>
@@ -16,18 +15,32 @@
     <button (click)="sequence.togglePanel(csspanel)">CSS</button>
     <button (click)="sequence.togglePanel(jspanel)">JS</button>
     <button (click)="sequence.togglePanel(outputpanel)">Output</button>
-    <button (click)="sequence.resetPanels()">Run</button>
   </div>
   <div class="main">
     <kanvaz-panel-sequence #sequence="sequence">
-      <kanvaz-panel #htmlpanel="panel" [title]="'HTML (' + kanvaz.files[0].name + ')'">
-        <codemirror-editor mode="html" [value]="kanvaz.files[0].content"></codemirror-editor>
+      <kanvaz-panel #htmlpanel="panel" [title]="'HTML (' + activeHTMLFile + ')'">
+        <codemirror-editor 
+          #htmleditor="editor"
+          mode="html"
+          [value]="kanvaz.getFileContents(activeHTMLFile)"
+          (change)="kanvaz.setFileContents(activeHTMLFile, htmleditor.getValue())"
+        ></codemirror-editor>
       </kanvaz-panel>
-      <kanvaz-panel #csspanel="panel" [title]="'CSS (' + kanvaz.files[1].name + ')'">
-        <codemirror-editor mode="css" [value]="kanvaz.files[1].content"></codemirror-editor>
+      <kanvaz-panel #csspanel="panel" [title]="'CSS (' + activeCSSFile + ')'">
+        <codemirror-editor 
+          #csseditor="editor"
+          mode="css"
+          [value]="kanvaz.getFileContents(activeCSSFile)"
+          (change)="kanvaz.setFileContents(activeCSSFile, csseditor.getValue())"
+        ></codemirror-editor>
       </kanvaz-panel>
-      <kanvaz-panel #jspanel="panel" [title]="'JavaScript (' + kanvaz.files[2].name + ')'">
-        <codemirror-editor mode="javascript" [value]="kanvaz.files[2].content"></codemirror-editor>
+      <kanvaz-panel #jspanel="panel" [title]="'JavaScript (' + activeJSFile + ')'">
+        <codemirror-editor
+          #jseditor="editor"
+          mode="javascript"
+          [value]="kanvaz.getFileContents(activeJSFile)"
+          (change)="kanvaz.setFileContents(activeJSFile, jseditor.getValue())"
+        ></codemirror-editor>
       </kanvaz-panel>
       <kanvaz-panel #outputpanel="panel" title="Output">
       </kanvaz-panel>

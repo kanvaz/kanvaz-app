@@ -8,9 +8,11 @@ export let defaultKanvaz = new Kanvaz([
 <head>
   <meta charset="utf-8">
   <title>Kanvaz</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Hello</h1>
+  <script src="app.js"></script>
 </body>
 </html>`
   },
