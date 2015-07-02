@@ -2,7 +2,9 @@
   <div class="file-drawer" [class]="{'file-drawer--closed': !fileDrawerOpen}">
     <h3 style="margin: 0;">Files</h3>
     <ul style="margin: 0;">
-      <li *ng-for="var file of kanvaz.files"><a (click)="openFile(file)">{{file.name}}</a> <button (click)="kanvaz.removeFile(file)">remove</button></li>
+      <li *ng-for="var file of kanvaz.files">
+        <a style="cursor: pointer;"(click)="openFile(file)">{{file.name}}</a> <button [disabled]="isActiveFile(file)" (click)="kanvaz.removeFile(file)">remove</button>
+      </li>
     </ul>
     <button (click)="promptNewFile()">New file</button>
   </div>
@@ -19,7 +21,7 @@
   <div class="main">
     <kanvaz-panel-sequence #sequence="sequence">
       <kanvaz-panel #htmlpanel="panel" [title]="'HTML (' + activeHTMLFile + ')'">
-        <codemirror-editor 
+        <codemirror-editor
           #htmleditor="editor"
           mode="html"
           [value]="kanvaz.getFileContents(activeHTMLFile)"
@@ -27,7 +29,7 @@
         ></codemirror-editor>
       </kanvaz-panel>
       <kanvaz-panel #csspanel="panel" [title]="'CSS (' + activeCSSFile + ')'">
-        <codemirror-editor 
+        <codemirror-editor
           #csseditor="editor"
           mode="css"
           [value]="kanvaz.getFileContents(activeCSSFile)"

@@ -24,7 +24,7 @@ let template = require('./kanvaz_editor.html');
 })
 export class KanvazEditor {
 
-  kanvaz:Kanvaz;
+  kanvaz:Kanvaz = new Kanvaz([]); // TODO(pascal): this needs to be fixed
 
   fileDrawerOpen:boolean = true;
 
@@ -36,10 +36,17 @@ export class KanvazEditor {
 
   constructor(kanvazService:KanvazService) {
     this.kanvaz = kanvazService.create();
+    // kanvazService.create().subscribe((kanvaz) => {
+    //   this.kanvaz = kanvaz;
+    // })
   }
 
   toggleFileDrawer() {
     this.fileDrawerOpen = !this.fileDrawerOpen;
+  }
+
+  isActiveFile(file) {
+    return (file.name === this.activeCSSFile || file.name === this.activeHTMLFile || file.name === this.activeJSFile);
   }
 
   openFile(file) {

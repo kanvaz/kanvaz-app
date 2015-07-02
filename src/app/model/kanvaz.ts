@@ -1,8 +1,8 @@
 export class Kanvaz {
 
-  files:array;
+  files:Array<any> = [];
 
-  constructor(files:array) {
+  constructor(files:Array) {
     this.files = files;
   }
 
@@ -26,8 +26,9 @@ export class Kanvaz {
   }
 
   getFileContents(name) {
-    return this.files.filter((file) => {
+    var file = this.files.filter((file) => {
       return file.name === name;
-    })[0].content;
+    })[0];
+    return (file) ? file.content : '';
   }
 }
