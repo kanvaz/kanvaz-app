@@ -24,7 +24,7 @@
         [title]="'HTML'" [filename]="'(' + activeHtmlFile + ')'"
         [focus]="true"
         [ng-class]="{'panel--focused': htmlpanel.focus}"
-        (^click)="sequence.setFocus(htmlpanel)">
+        (click)="sequence.setFocus(htmlpanel)">
         <codemirror-editor
           #htmleditor="editor"
           [value]="kanvaz.getFileContents(activeHtmlFile)"
@@ -37,7 +37,7 @@
         [title]="'CSS'"
         [ng-class]="{'panel--focused': csspanel.focus}"
         [filename]="'(' + activeCssFile + ')'"
-        (^click)="sequence.setFocus(csspanel)">
+        (click)="sequence.setFocus(csspanel)">
         <codemirror-editor
           #csseditor="editor"
           [value]="kanvaz.getFileContents(activeCssFile)"
@@ -50,7 +50,7 @@
         [title]="'JS'"
         [ng-class]="{'panel--focused': jspanel.focus}"
         [filename]="'(' + activeJsFile + ')'"
-        (^click)="sequence.setFocus(jspanel)">
+        (click)="sequence.setFocus(jspanel)">
         <codemirror-editor
           #jseditor="editor"
           [value]="kanvaz.getFileContents(activeJsFile)"

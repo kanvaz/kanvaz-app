@@ -1,9 +1,8 @@
-import {Component, View, LifecycleEvent, Query, ViewQuery, QueryList, NgFor} from 'angular2/angular2';
+import {Component, View, Query, ViewQuery, QueryList, NgFor} from 'angular2/angular2';
 import {KanvazPanel} from '../kanvaz_panel/kanvaz_panel';
 
 @Component({
   selector: 'kanvaz-panel-sequence',
-  lifecycle: [LifecycleEvent.onInit],
   exportAs: 'sequence'
 })
 @View({

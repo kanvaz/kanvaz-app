@@ -1,12 +1,11 @@
 import {Component, View, bootstrap} from 'angular2/angular2';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_BINDINGS} from 'angular2/router';
-import {HTTP_BINDINGS} from 'http/http';
+import {HTTP_BINDINGS} from 'angular2/http';
 
 import {KanvazEditor} from './components/kanvaz_editor/kanvaz_editor';
 
 @Component({
-  selector: 'kanvaz-app',
-  // viewBindings: [NamesList]
+  selector: 'kanvaz-app'
 })
 @RouteConfig([
   { path: '/', component: KanvazEditor, as: 'kanvaz-editor' },

@@ -1,16 +1,15 @@
-import {Component, View, ElementRef, Attribute, LifecycleEvent, EventEmitter, ViewEncapsulation} from 'angular2/angular2';
+import {Component, View, ElementRef, Attribute, EventEmitter, ViewEncapsulation} from 'angular2/angular2';
 
 @Component({
   selector: 'codemirror-editor',
   properties: ['value'],
   events: ['change'],
-  lifecycle: [LifecycleEvent.onInit, LifecycleEvent.onChange],
   exportAs: 'editor'
 })
 @View({
   styleUrls: ['./components/codemirror_editor/codemirror_editor.css'],
   template: '',
-  encapsulation: ViewEncapsulation.NONE
+  encapsulation: ViewEncapsulation.None
 })
 export class CodemirrorEditor {
 
@@ -46,7 +45,7 @@ export class CodemirrorEditor {
     this.setValue(this.value);
   }
 
-  onChange() {
+  onChanges() {
     var cursorPos = this.editor.getCursor();
     this.setValue(this.value);
     this.editor.setCursor(cursorPos);
