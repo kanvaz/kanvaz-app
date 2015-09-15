@@ -1,5 +1,6 @@
 import {Component, View, Query, ViewQuery, QueryList, NgFor} from 'angular2/angular2';
 import {KanvazPanel} from '../kanvaz_panel/kanvaz_panel';
+import {KanvazEditor} from'../kanvaz_editor/kanvaz_editor';
 
 @Component({
   selector: 'kanvaz-panel-sequence',

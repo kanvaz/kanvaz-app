@@ -3,7 +3,7 @@
     <h3 style="margin: 0;">Files</h3>
     <ul style="margin: 0;">
       <li *ng-for="var file of kanvaz.files">
-        <a [ng-class]="{'file--active': isActiveFile(file)}" style="cursor: pointer;"(click)="openFile(file)">{{file.name}}</a> <button [disabled]="isActiveFile(file)" (click)="kanvaz.removeFile(file)">remove</button>
+        <a [ng-class]="{'file--active': isActiveFile(file)}" style="cursor: pointer;"(click)="openFile(file, htmlpanel, csspanel, jspanel)">{{file.name}}</a> <button [disabled]="isActiveFile(file)" (click)="kanvaz.removeFile(file)">remove</button>
       </li>
     </ul>
     <button (click)="promptNewFile()">New file</button>
