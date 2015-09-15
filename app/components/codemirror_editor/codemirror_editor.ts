@@ -25,7 +25,7 @@ export class CodemirrorEditor {
     var domElement = elementRef.nativeElement;
 
     this.editor = CodeMirror(domElement, {
-      mode: mode
+      mode: this.mode
     });
 
     this.editor.on('change', () => {

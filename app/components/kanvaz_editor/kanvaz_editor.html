@@ -59,7 +59,11 @@
           mode="js"
         ></codemirror-editor>
       </kanvaz-panel>
-      <kanvaz-panel #outputpanel="panel" [title]="'Output:'" [focus]="true">
+      <kanvaz-panel
+        #outputpanel="panel"
+        [title]="'Output:'"
+        [ng-class]="{'panel--focused': outputpanel.focus}"
+        (click)="sequence.setFocus(outputpanel)">
       </kanvaz-panel>
     </kanvaz-panel-sequence>
   </div>
