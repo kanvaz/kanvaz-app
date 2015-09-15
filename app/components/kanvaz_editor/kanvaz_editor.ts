@@ -42,15 +42,18 @@ export class KanvazEditor {
     switch (fileExt) {
       case 'html':
         this.activeHtmlFile = file.name;
+        this.panelSequences.first.openPanel(htmlPanel);
         this.panelSequences.first.setFocus(htmlPanel);
         break;
       case 'css':
         this.activeCssFile = file.name;
+        this.panelSequences.first.openPanel(cssPanel);
         this.panelSequences.first.setFocus(cssPanel);
         break;
       case 'js':
       case 'ts':
         this.activeJsFile = file.name;
+        this.panelSequences.first.openPanel(jsPanel);
         this.panelSequences.first.setFocus(jsPanel);
         break;
     }

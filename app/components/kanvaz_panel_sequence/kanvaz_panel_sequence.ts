@@ -24,6 +24,11 @@ export class KanvazPanelSequence {
     this.resetPanels();
   }
 
+  openPanel(panel:KanvazPanel) {
+    panel.nativeElement.hidden = false;
+    this.resetPanels();
+  }
+
   resetPanels() {
     var visiblePanels = this.panels.filter((panel) => {
       return panel.nativeElement.hidden !== true;

@@ -15,7 +15,7 @@ export class CodemirrorEditor {
 
   mode:string;
   value:string;
-  editor:CodeMirror;
+  editor;
   change:EventEmitter = new EventEmitter();
   cursorPos;
 
