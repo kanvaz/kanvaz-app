@@ -25,6 +25,25 @@ export class KanvazEditor {
 
   constructor(kanvazService: KanvazService, @ViewQuery(KanvazPanelSequence) panelSequences:QueryList<KanvazPanelSequence>) {
     this.kanvaz = kanvazService.create();
+
+    // To test the backend:
+    // 1. Start server (atelier-rest-api)
+    // 2. uncomment the following code
+    // 3. Look at the console to get the id of the saved kanvaz
+    // 4. Change the id in the fetch call
+    // 5. Reload browser
+
+
+    // kanvazService
+    //   .save(this.kanvaz)
+    //   .then(() => console.log, () => console.log);
+    //
+    // kanvazService
+    //   .fetch('f2475798981d4805acfdbf1e5a3df2e5')
+    //   .then((kanvaz) => {
+    //     this.kanvaz = kanvaz;
+    //   });
+
     this.panelSequences = panelSequences;
   }
 

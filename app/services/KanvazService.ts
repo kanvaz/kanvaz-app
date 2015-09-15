@@ -31,9 +31,23 @@ export class Kanvaz {
     })[0];
     return (file) ? file.content : '';
   }
+
+  toJson () {
+    var data = {
+      files: this.files
+    };
+
+    return JSON.stringify(data);
+  }
 }
 
 export class KanvazService {
+
+  apiEndpoint = 'http://localhost:6767/kanvaz';
+  headers = {
+    "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+  };
+
   create() {
     return new Kanvaz([
       {
@@ -53,12 +67,47 @@ export class KanvazService {
         },
         {
           name: 'styles.css',
-          content: 'h1 { color: red; }'
+          content: 'h1 { color: blue; }'
         },
         {
           name: 'app.js',
           content: 'console.log(\'Hello World!\');'
         }
       ]);
+  }
+
+  private toJson (response) {
+    return response.json()
+  }
+
+  private logSuccess (data) {
+    console.log('Request succeeded with JSON response', data);
+    return data;
+  }
+
+  private logError (error) {
+    console.log('Request failed', error);
+  }
+
+  save (kanvaz: Kanvaz) {
+    return fetch(this.apiEndpoint, {
+      method: 'post',
+      headers: this.headers,
+      body: kanvaz.toJson()
+    })
+    .then(this.toJson)
+    .then(this.logSuccess)
+    .catch(this.logError);
+  }
+
+  fetch (id: string) {
+    return fetch(this.apiEndpoint + '/' + id, {
+      method: 'get',
+      headers: this.headers
+    })
+    .then(this.toJson)
+    .then(this.logSuccess)
+    .then((data) => new Kanvaz(data.files))
+    .catch(this.logError);
   }
 }
