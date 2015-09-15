@@ -29,7 +29,7 @@ export class CodemirrorEditor {
     });
 
     this.editor.on('change', () => {
-      this.change.next();
+      this.change.next(null);
     });
   }
 
@@ -51,4 +51,3 @@ export class CodemirrorEditor {
     this.editor.setCursor(cursorPos);
   }
 }
-

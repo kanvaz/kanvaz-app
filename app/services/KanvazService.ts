@@ -2,7 +2,7 @@ export class Kanvaz {
 
   files:Array<any> = [];
 
-  constructor(files:Array) {
+  constructor(files:Array<any>) {
     this.files = files;
   }
 

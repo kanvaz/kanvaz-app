@@ -12,7 +12,7 @@ import {KanvazEditor} from'../kanvaz_editor/kanvaz_editor';
 })
 export class KanvazPanelSequence {
 
-  panels:List<KanvazPanel> = [];
+  panels:Array<KanvazPanel> = [];
 
   // TODO(pascal): don't we wanna use `@Query` instead?
   addPanel(panel:KanvazPanel) {

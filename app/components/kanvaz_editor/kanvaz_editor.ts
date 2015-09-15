@@ -17,6 +17,7 @@ import {CodemirrorEditor} from '../codemirror_editor/codemirror_editor';
 export class KanvazEditor {
   kanvaz:Kanvaz;
   panelSequence:KanvazPanelSequence;
+  panelSequences: QueryList<KanvazPanelSequence>;
   fileDrawerOpen:boolean = true;
   activeHtmlFile:string = 'index.html';
   activeCssFile:string = 'styles.css';
