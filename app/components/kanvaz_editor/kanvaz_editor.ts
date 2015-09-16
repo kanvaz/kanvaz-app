@@ -1,4 +1,5 @@
 import {Component, View, NgFor, NgClass, ViewQuery, QueryList} from 'angular2/angular2';
+import {RouteParams} from 'angular2/router';
 
 import {KanvazPanel} from '../kanvaz_panel/kanvaz_panel';
 import {KanvazPanelSequence} from '../kanvaz_panel_sequence/kanvaz_panel_sequence';
@@ -23,26 +24,34 @@ export class KanvazEditor {
   activeCssFile:string = 'styles.css';
   activeJsFile:string = 'app.js';
 
-  constructor(kanvazService: KanvazService, @ViewQuery(KanvazPanelSequence) panelSequences:QueryList<KanvazPanelSequence>) {
-    this.kanvaz = kanvazService.create();
+  constructor(routeParams: RouteParams, kanvazService: KanvazService, @ViewQuery(KanvazPanelSequence) panelSequences:QueryList<KanvazPanelSequence>) {
+    this.kanvaz = new Kanvaz([]);
+    // FIXME: Get rid of RouteParams here
+    // The KanvazEditor shouldn't know how to retrieve a Kanvaz
+    // Ideally it would just get a Kanvaz or Observable<Kanvaz> from somewhere
+    // and work with that
 
+    let kanvazId = routeParams.get('kanvaz_id');
+    if (!kanvazId) {
+      this.kanvaz = kanvazService.create();
+    }
+    else {
+      kanvazService
+        .fetch(kanvazId)
+        .then((kanvaz) => {
+          this.kanvaz = kanvaz;
+        });
+    }
     // To test the backend:
     // 1. Start server (atelier-rest-api)
-    // 2. uncomment the following code
+    // 2. Uncomment the following code
     // 3. Look at the console to get the id of the saved kanvaz
-    // 4. Change the id in the fetch call
-    // 5. Reload browser
+    // 4. Reload the app as /idOfKanvaz
 
 
     // kanvazService
     //   .save(this.kanvaz)
     //   .then(() => console.log, () => console.log);
-    //
-    // kanvazService
-    //   .fetch('f2475798981d4805acfdbf1e5a3df2e5')
-    //   .then((kanvaz) => {
-    //     this.kanvaz = kanvaz;
-    //   });
 
     this.panelSequences = panelSequences;
   }

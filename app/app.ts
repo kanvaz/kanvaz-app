@@ -9,6 +9,7 @@ import {KanvazEditor} from './components/kanvaz_editor/kanvaz_editor';
 })
 @RouteConfig([
   { path: '/', component: KanvazEditor, as: 'kanvaz-editor' },
+  { path: '/:kanvaz_id', component: KanvazEditor },
   { path: '/:kanvaz_id/:version', component: KanvazEditor },
   { path: '/:user_id/:kanvaz_id/:version', component: KanvazEditor }
 ])
@@ -16,6 +17,6 @@ import {KanvazEditor} from './components/kanvaz_editor/kanvaz_editor';
   template: '<router-outlet></router-outlet>',
   directives: [ROUTER_DIRECTIVES]
 })
-class App {}
+class KanvazApp {}
 
-bootstrap(App, [ROUTER_BINDINGS, HTTP_BINDINGS]);
+bootstrap(KanvazApp, [ROUTER_BINDINGS, HTTP_BINDINGS]);
