@@ -1,0 +1,63 @@
+:host {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.left-region {
+  height: 100%;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+}
+
+.right-region {
+  height: 100%;
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.file-drawer {
+  height: 100%;
+  border-right: 1px solid #ccc;
+}
+
+.file-drawer--closed {
+  display: none;
+}
+
+.toolbar {
+  display: block;
+  background-color: transparent;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); */
+  border-bottom: 1px solid #ccc;
+  height: 50px;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0.5em 1em;
+  text-align: center;
+}
+
+.main {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  bottom: 0;
+  right: 0;
+}
+
+.file--active {
+  font-weight: bold;
+}
