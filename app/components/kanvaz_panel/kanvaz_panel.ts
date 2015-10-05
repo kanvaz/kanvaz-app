@@ -1,4 +1,4 @@
-import {Component, View, NgIf, ElementRef, Host} from 'angular2/angular2';
+import {Component, View, Attribute, NgIf, ElementRef, Host} from 'angular2/angular2';
 
 import {KanvazPanelSequence} from '../kanvaz_panel_sequence/kanvaz_panel_sequence';
 
@@ -17,11 +17,13 @@ export class KanvazPanel {
   active:boolean;
   title:string = '';
   filename:string = '';
+  name: string = '';
   focus:boolean;
   nativeElement;
 
-  constructor(elementRef: ElementRef, @Host() panelSequence: KanvazPanelSequence) {
+  constructor(elementRef: ElementRef, @Attribute('name') name:string, @Host() panelSequence: KanvazPanelSequence) {
     panelSequence.addPanel(this);
+    this.name = name;
     this.nativeElement = elementRef.nativeElement;
   }
 }

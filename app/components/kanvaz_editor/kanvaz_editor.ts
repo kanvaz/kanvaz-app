@@ -18,11 +18,12 @@ import {CodemirrorEditor} from '../codemirror_editor/codemirror_editor';
 export class KanvazEditor {
   kanvaz:Kanvaz;
   panelSequence:KanvazPanelSequence;
-  panelSequences: QueryList<KanvazPanelSequence>;
   fileDrawerOpen:boolean = true;
-  activeHtmlFile:string = 'index.html';
-  activeCssFile:string = 'styles.css';
-  activeJsFile:string = 'app.js';
+  activeFiles = {
+    html: 'index.html',
+    css: 'styles.css',
+    js: 'app.js'
+  };
 
   constructor(routeParams: RouteParams, kanvazService: KanvazService, @ViewQuery(KanvazPanelSequence) panelSequences:QueryList<KanvazPanelSequence>) {
     this.kanvaz = new Kanvaz([]);
@@ -53,39 +54,28 @@ export class KanvazEditor {
     //   .save(this.kanvaz)
     //   .then(() => console.log, () => console.log);
 
-    this.panelSequences = panelSequences;
+    panelSequences.onChange(() => this.panelSequence = panelSequences.first);
   }
 
   toggleFileDrawer() {
     this.fileDrawerOpen = !this.fileDrawerOpen;
   }
 
-  isActiveFile(file) {
-    return (file.name === this.activeCssFile || file.name === this.activeHtmlFile || file.name === this.activeJsFile);
+  isActiveFile (file: any) :boolean {
+    let ext = this.getFileNameExtension(file.name);
+    return this.activeFiles[ext] === file.name;
   }
 
-  // TODO(pascal): can we decouple here?
-  openFile(file, htmlPanel:KanvazPanel, cssPanel:KanvazPanel, jsPanel:KanvazPanel) {
-    var fileExt = file.name.substr((~-file.name.lastIndexOf(".") >>> 0) + 2);
+  getFileNameExtension (fileName: string) :string {
+    return fileName.substr((~-fileName.lastIndexOf(".") >>> 0) + 2);
+  }
 
-    switch (fileExt) {
-      case 'html':
-        this.activeHtmlFile = file.name;
-        this.panelSequences.first.openPanel(htmlPanel);
-        this.panelSequences.first.setFocus(htmlPanel);
-        break;
-      case 'css':
-        this.activeCssFile = file.name;
-        this.panelSequences.first.openPanel(cssPanel);
-        this.panelSequences.first.setFocus(cssPanel);
-        break;
-      case 'js':
-      case 'ts':
-        this.activeJsFile = file.name;
-        this.panelSequences.first.openPanel(jsPanel);
-        this.panelSequences.first.setFocus(jsPanel);
-        break;
-    }
+  openFile(file) {
+    var fileExt = this.getFileNameExtension(file.name);
+
+    this.activeFiles[fileExt] = file.name;
+    this.panelSequence.openPanelByName(fileExt);
+    this.panelSequence.focusPanelByName(fileExt);
   }
 
   promptNewFile() {

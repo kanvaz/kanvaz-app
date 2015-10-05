@@ -25,8 +25,29 @@ export class KanvazPanelSequence {
   }
 
   openPanel(panel:KanvazPanel) {
+    this.openPanelByPredicate((val) => val === panel)
+  }
+
+  openPanelByName (name: string) {
+    this.openPanelByPredicate((panel) => panel.name === name);
+  }
+
+  openPanelByPredicate (predicate: (panel: KanvazPanel) => boolean) {
+    let panel = this.getPanelByPredicate(predicate);
+    if (!panel) {
+      throw new Error ('KanvazPanelSequenz => openPanelByPredicate: unable to get panel');
+    }
+
     panel.nativeElement.hidden = false;
     this.resetPanels();
+  }
+
+  getPanelByName (name: string) {
+    return this.getPanelByPredicate((panel) => panel.name === name);
+  }
+
+  getPanelByPredicate (predicate: (panel: KanvazPanel) => boolean) {
+    return this.panels.find(predicate);
   }
 
   resetPanels() {
@@ -57,10 +78,22 @@ export class KanvazPanelSequence {
     this.resetPanels();
   }
 
-  setFocus(panel:KanvazPanel) {
-    this.panels.map((panel) => {
-      panel.focus = false;
-    });
+  focusPanel(panel:KanvazPanel) {
+    this.focusPanelByPredicate((val) => val === panel);
+  }
+
+  focusPanelByName (name: string) {
+    this.focusPanelByPredicate((panel) => panel.name === name);
+  }
+
+  focusPanelByPredicate (predicate: (panel: KanvazPanel) => boolean) {
+    let panel = this.getPanelByPredicate(predicate);
+    if (!panel) {
+      throw new Error ('KanvazPanelSequenz => focusPanelByPredicate: unable to get panel');
+    }
+
+    this.panels.map((panel) => panel.focus = false);
     panel.focus = true;
   }
+
 }

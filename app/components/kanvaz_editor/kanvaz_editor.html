@@ -3,7 +3,7 @@
     <h3 style="margin: 0;">Files</h3>
     <ul style="margin: 0;">
       <li *ng-for="var file of kanvaz.files">
-        <a [ng-class]="{'file--active': isActiveFile(file)}" style="cursor: pointer;"(click)="openFile(file, htmlpanel, csspanel, jspanel)">{{file.name}}</a> <button [disabled]="isActiveFile(file)" (click)="kanvaz.removeFile(file)">remove</button>
+        <a [ng-class]="{'file--active': isActiveFile(file)}" style="cursor: pointer;"(click)="openFile(file)">{{file.name}}</a> <button [disabled]="isActiveFile(file)" (click)="kanvaz.removeFile(file)">remove</button>
       </li>
     </ul>
     <button (click)="promptNewFile()">New file</button>
@@ -21,49 +21,53 @@
     <kanvaz-panel-sequence #sequence="sequence">
       <kanvaz-panel
         #htmlpanel="panel"
-        [title]="'HTML'" [filename]="'(' + activeHtmlFile + ')'"
+        name="html"
+        [title]="'HTML'" [filename]="'(' + activeFiles.html + ')'"
         [focus]="true"
         [ng-class]="{'panel--focused': htmlpanel.focus}"
-        (click)="sequence.setFocus(htmlpanel)">
+        (click)="sequence.focusPanel(htmlpanel)">
         <codemirror-editor
           #htmleditor="editor"
-          [value]="kanvaz.getFileContents(activeHtmlFile)"
-          (change)="kanvaz.setFileContents(activeHtmlFile, htmleditor.getValue())"
+          [value]="kanvaz.getFileContents(activeFiles.html)"
+          (change)="kanvaz.setFileContents(activeFiles.html, htmleditor.getValue())"
           mode="html"
         ></codemirror-editor>
       </kanvaz-panel>
       <kanvaz-panel
         #csspanel="panel"
+        name="css"
         [title]="'CSS'"
         [ng-class]="{'panel--focused': csspanel.focus}"
-        [filename]="'(' + activeCssFile + ')'"
-        (click)="sequence.setFocus(csspanel)">
+        [filename]="'(' + activeFiles.css + ')'"
+        (click)="sequence.focusPanel(csspanel)">
         <codemirror-editor
           #csseditor="editor"
-          [value]="kanvaz.getFileContents(activeCssFile)"
-          (change)="kanvaz.setFileContents(activeCssFile, csseditor.getValue())"
+          [value]="kanvaz.getFileContents(activeFiles.css)"
+          (change)="kanvaz.setFileContents(activeFiles.css, csseditor.getValue())"
           mode="css"
         ></codemirror-editor>
       </kanvaz-panel>
       <kanvaz-panel
         #jspanel="panel"
+        name="js"
         [title]="'JS'"
         [ng-class]="{'panel--focused': jspanel.focus}"
-        [filename]="'(' + activeJsFile + ')'"
-        (click)="sequence.setFocus(jspanel)">
+        [filename]="'(' + activeFiles.js + ')'"
+        (click)="sequence.focusPanel(jspanel)">
         <codemirror-editor
           #jseditor="editor"
-          [value]="kanvaz.getFileContents(activeJsFile)"
+          [value]="kanvaz.getFileContents(activeFiles.js)"
           [ng-class]="{'panel--focused': jspanel.focus}"
-          (change)="kanvaz.setFileContents(activeJsFile, jseditor.getValue())"
+          (change)="kanvaz.setFileContents(activeFiles.js, jseditor.getValue())"
           mode="js"
         ></codemirror-editor>
       </kanvaz-panel>
       <kanvaz-panel
+        name="output"
         #outputpanel="panel"
         [title]="'Output:'"
         [ng-class]="{'panel--focused': outputpanel.focus}"
-        (click)="sequence.setFocus(outputpanel)">
+        (click)="sequence.focusPanel(outputpanel)">
       </kanvaz-panel>
     </kanvaz-panel-sequence>
   </div>
